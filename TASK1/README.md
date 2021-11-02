@@ -1,10 +1,8 @@
 # [AI 해커톤 본선 과제-2] 작물 내 해충 객체 검출 
 
 ## Requirements
-- Python 3.#.#
-- Ubuntu 
-- Cuda
- 
+- Ubuntu  : 18.04
+- Python  : 3.8.5
 ```
 pip install -r requirements.txt
 ```
