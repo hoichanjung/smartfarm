@@ -1,10 +1,8 @@
 # [AI 해커톤 본선 과제-1] 과수(사과, 배) 화상병 진단 문제
 
 ## Requirements
-- Python 3.#.#
-- Ubuntu 
-- Cuda
- 
+- Ubuntu  : 18.04
+- Python  : 3.8.5
 ```
 pip install -r requirements.txt
 ```
