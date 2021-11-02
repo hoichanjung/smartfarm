@@ -10,12 +10,21 @@ pip install -r requirements.txt
 ## Model
 - CBNetV2: A Composite Backbone Network Architecture for Object Detection
 - Paper : https://arxiv.org/abs/2107.00420 (Tingting Liang, Xiaojie Chu, Yudong Liu, Yongtao Wang, Zhi Tang, Wei Chu, Jingdong Chen, Haibin Ling)
-> CBNetV2는 pre-training 없이 기존에 존재하는 pre-trained backbones의 architecture와 weight를 최대한 활용한 Object Detection 모델로 Assistant backbone과 Lead backbone으로 구분된 동일한 구조의 K개(K≥1)의 backbone을 Composite Function과 Assistant Supervision을 활용하여 fine-tuning한 Object Detection 모델입니다. 
+> CBNetV2는 pre-training 없이 기존에 존재하는 Pre-trained Backbones의 Architecture와 Weight를 최대한 활용한 Object Detection 모델로 Assistant backbone과 Lead backbone으로 구분된 동일한 구조의 K개(K≥1)의 Backbone을 Composite Function과 Assistant Supervision을 활용하여 fine-tuning한 Object Detection 모델입니다. 
 > 
-> Assistant backbones에서 생성한 high-, low-level feature을 composite function을 통해 lead backbone의 receptive field를 점차 넓혀 성능을 향상시키고자 하였습니다. Composition function으로는 DenseNet의 Dense Connection에서 영감을 받은 Dense Higher-Level Composition(DHLC)을 활용하여 이전 backbone의 higher-level stage feature를 다음 backbone의 lower-level stage feature에 더해주었습니다.
+> Assistant Backbones에서 생성한 High-, Low-Level Feature을 Composite Function을 통해 Lead Backbone의 Receptive Field를 점차 넓혀 성능을 향상시키고자 하였습니다. Composition function으로는 DenseNet의 Dense Connection에서 영감을 받은 Dense Higher-Level Composition(DHLC)을 활용하여 이전 Backbone의 Higher-Level Stage Feature를 다음 Backbone의 Lower-Level Stage Feature에 더해주었습니다.
 > 
-> CBNetV2는 assistant backbone에 대한 supervision을 활용하는 학습 전략을 통해 기존 CBNet 보다 성능을 향상 시켰습니다. 기존의 lead backbone의 feature를 학습한 detection head 1뿐만 아니라 assistant supervision을 학습한 detection head 2를 통해 loss를 계산합니다. 이때, Detection head 1과 2는 가중치를 공유합니다. Lambda를 통해 assistant loss에 대한 가중치를 조절합니다. 
-Detection Head는 Faster R-CNN에 Feature Pyramid Network를 적용하여 사용하였으며, 2개의 pre-trained Swin-Large Transformer로 구성된 Dual-Swin-L 모델을 통해 COCO test-dev 데이터에 대하여 59.4% box AP와 51.6% mask AP를 기록하였습니다.
+> CBNetV2는 Assistant Backbone에 대한 Supervision을 활용하는 학습 전략을 통해 기존 CBNet 보다 성능을 향상 시켰습니다. 기존의 Lead backbone의 Feature를 학습한 Detection Head 1의 Loss와 더불어 Assistant Supervision을 학습한 Detection Head 2의 Loss를 함께 계산합니다. 이때, Detection Head 1과 2는 가중치를 공유합니다. Lambda를 통해 Assistant Loss에 대한 가중치를 조절합니다. 
+> $$L = LLead +
+K
+X−1
+i=1
+(λi
+· Li
+Assist)$$
+> 
+> 
+>Detection Head는 Faster R-CNN에 Feature Pyramid Network를 적용하여 사용하였으며, 2개의 pre-trained Swin-Large Transformer로 구성된 Dual-Swin-L 모델을 통해 COCO test-dev 데이터에 대하여 59.4% box AP와 51.6% mask AP를 기록하였습니다.
 
 ## Preprocessing
 ```
