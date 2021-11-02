@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ## Model
 - CBNetV2: A Composite Backbone Network Architecture for Object Detection
 - Paper : https://arxiv.org/abs/2107.00420 (Tingting Liang, Xiaojie Chu, Yudong Liu, Yongtao Wang, Zhi Tang, Wei Chu, Jingdong Chen, Haibin Ling)
-> CBNetV2는 pre-training 없이 기존에 존재하는 pre-trained backbones의 architecture와 weight를 최대한 활용한 모델로 assistant backbone과 lead backbone으로 구분된 동일한 구조의 K개(K≥1)의 backbone을 Composite Function과 Assistant Supervision을 활용하여 fine-tuning한 Object Detection 모델입니다. 
+> CBNetV2는 pre-training 없이 기존에 존재하는 pre-trained backbones의 architecture와 weight를 최대한 활용한 Object Detection 모델입니다. Assistant backbone과 Lead backbone으로 구분된 동일한 구조의 K개(K≥1)의 backbone을 Composite Function과 Assistant Supervision을 활용하여 fine-tuning한 Object Detection 모델입니다. 
 > 
 > Assistant backbones에서 생성한 high-, low-level feature을 composite function을 통해 lead backbone의 receptive field를 점차 넓혀 성능을 향상시키고자 하였습니다. Composition function으로는 DenseNet의 Dense Connection에서 영감을 받은 Dense Higher-Level Composition(DHLC)을 활용하여 이전 backbone의 higher-level stage feature를 다음 backbone의 lower-level stage feature에 더해주었습니다.
 > 
