@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ## Model
 - 모델 명
 - Paper : 논문 링크
-> 모델 설
+> 모델 설명
 
 ## Preprocessing
 ```
