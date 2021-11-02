@@ -26,3 +26,12 @@ your code
 ```
 your code
 ```
+## Ensemble
+- Weighted Boxes Fusion: ensembling boxes for object detection models
+- Paper : https://arxiv.org/abs/1910.13302 (Roman Solovyev, Weimin Wang, Tatiana Gabruseva)
+> Weighted Boxes Fusion(WBF)는 여러 Object Detection 모델이 예측한 Bounding Box를 모두 활용하여 Ensemble하는 방법입니다. Interest Over Union(IoU)가 특정 threshold 이상인 bounding box에 대하여 융합을 진행합니다. 융합된 bounding box의 좌표는 각 bounding box의 confidence score의 weighted sum으로 계산하여 confidence score가 높은 box에 더 많이 영향을 받도록합니다..
+
+```
+your code
+```
+
