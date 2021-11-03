@@ -33,7 +33,8 @@ python preprocess.py
 - Detection Head : Cascade RCNN
 - Pre-Trained Model : Swin Transformer
 ```
-tools/dist_train.sh configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py 1
+tools/dist_train.sh 
+configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py 1
 ```
 
 ### 방법론 1. 
@@ -56,20 +57,42 @@ tools/dist_train.sh configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_windo
 >Swin Transformer는 Object Detection이나 Semantic Segmentation과 같은 Dense Prediction Task에서 이미지의 시각적 개체에 대한 Scale 변화가 크고, Pixel Resolution이 커서 Vision Transformer(ViT)가 잘 작동하지 않는다는 점을 보완한 모델임. Swin Transformer는 작은 크기의 Patch에서부터 시작하여 Layer가 깊어질수록 점차 주변 Patch를 병합하여 Hierarchical Representation을 구축함. 또한, Window Multi-head Self-Attention(MSA)과 Shifted Window MSA 방법론을 제안하여 Shifted Window가 이전 Layer의 Windows를 연결하여 Dense Prediction Task에서 큰 성능 개선함.
 
 ## Inference
+### Iteration 66000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_66000.pth --output work_dirs/ --save_name results_cascade_66000_flip
 ```
-- Submission format으로 변경함.
+### Iteration 70000, Flip = True
 ```
-python submission.py
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_flip
 ```
+
+### Iteration 66000, Flip = True
+```
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mode
+```
+### Iteration 70000, Flip = True
+```
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_70000_mod
+```
+### Iteration 68000, Flip = True
+```
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_68000_mod
+```
+### Iteration 64000, Flip = True
+```
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_64000_mod
+```
+
+### Submission format으로 변경함.
+```
+python submission.py --file_dir work_dirs/results_cascade_66000_flip.pickle --save_name submission_cascade_66000_flip.json
+```
+
 ## Ensemble
+```
+python submission_wbf.py --file_list submission_cascade_66000_flip.json submission_cascade_70000_flip.json submission_cascade_66000_mod.json submission_cascade_70000_mod.json submission_cascade_68000_mod.json submission_cascade_64000_mod.json --save_name submission_cascade_wbf_6670flip_iou05_weights332211.json --weights 3 3 2 2 1 1
+```
 - Weighted Boxes Fusion: ensembling boxes for object detection models
 - Paper : https://arxiv.org/abs/1910.13302 (Roman Solovyev, Weimin Wang, Tatiana Gabruseva)
 > Weighted Boxes Fusion(WBF)은 여러 Object Detection 모델이 예측한 Bounding Box를 모두 활용하는 Ensemble 기법임. Interest Over Union(IoU)이 특정 threshold 이상인 bounding box에 대하여 융합을 진행함. 융합된 bounding box의 좌표는 각 bounding box의 confidence score의 weighted sum으로 계산하여 confidence score가 높은 box에 더 많이 영향을 받도록 함.
-
-- Best Model 모델에 대한 WBF Ensemble을 진행함.
-```
-python submission_wbf.py
-```
 
