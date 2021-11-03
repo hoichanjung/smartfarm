@@ -67,12 +67,12 @@ python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/
 ```
 ### Iteration 70000, Flip = True
 ```
-python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_flip
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_70000_flip
 ```
 
 ### Iteration 66000, Flip = True
 ```
-python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mode
+python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mod
 ```
 ### Iteration 70000, Flip = True
 ```
