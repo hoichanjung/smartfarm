@@ -64,7 +64,7 @@ configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_
 ### Test Time Augmentation
 > Test Time Augmentation(TTA)는 Test 이미지에 대하여 Augmentation을 적용하여 Augmented Image 또한 평가하여 최종 분류 결과를 출력하는 기법임. Augmentation 기법 중 Flip을 적용함.
 
-### Confidence Score가 높은 모델 순서대로 TTA Inference 후, Submission format으로 변경함.
+### Inference 후, Submission format으로 변경함.
 ### Iteration 66000, Flip = True
 ```
 python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_66000.pth --output work_dirs/ --save_name results_cascade_66000_flip
@@ -75,7 +75,6 @@ python submission.py --file_dir work_dirs/results_cascade_66000_flip.pickle --sa
 python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_70000_flip
 python submission.py --file_dir work_dirs/results_cascade_70000_flip.pickle --save_name submission_cascade_70000_flip.json
 ```
-
 ### Iteration 66000, Flip = False
 ```
 python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mod
@@ -98,11 +97,10 @@ python submission.py --file_dir work_dirs/results_cascade_64000_mod.pickle --sav
 ```
 
 ## Ensemble
-### Weighted Boxes Fushion()을 활용하여 여러 Object Detection 모델의 Bounding Box 예측결과를 Ensemble함.
+- 여러 Object Detection 모델의 Bounding Box 예측결과를 mAP Score를 기준으로 정렬한 후 Weighted Boxes Fushion(WBF)을 활용하여 Ensemble함.
 ```
 python submission_wbf.py --file_list submission_cascade_66000_flip.json submission_cascade_70000_flip.json submission_cascade_66000_mod.json submission_cascade_70000_mod.json submission_cascade_68000_mod.json submission_cascade_64000_mod.json --save_name submission_cascade_wbf_6670flip_iou05_weights332211.json --weights 3 3 2 2 1 1
 ```
 - Weighted Boxes Fusion: ensembling boxes for object detection models
 - Paper : https://arxiv.org/abs/1910.13302 (Roman Solovyev, Weimin Wang, Tatiana Gabruseva)
 > Weighted Boxes Fusion(WBF)은 여러 Object Detection 모델이 예측한 Bounding Box를 모두 활용하는 Ensemble 기법임. Interest Over Union(IoU)이 특정 threshold 이상인 bounding box에 대하여 융합을 진행함. 융합된 bounding box의 좌표는 각 bounding box의 confidence score의 weighted sum으로 계산하여 confidence score가 높은 box에 더 많이 영향을 받도록 함.
-
