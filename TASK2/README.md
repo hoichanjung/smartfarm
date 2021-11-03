@@ -3,6 +3,21 @@
 ## Requirements
 - Ubuntu  : 18.04
 - Python  : 3.8.5
+- Download Weight File
+```
+pip install git
+git clone https://github.com/VDIGPKU/CBNetV2.git
+cd CBNetV2
+wget https://github.com/CBNetwork/storage/releases/download/v1.0.0/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.pth.zip
+unzip cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.pth.zip
+```
+- Install Apex
+```
+git clone https://github.com/NVIDIA/apex
+cd apex
+pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+```
+
 ```
 pip install -r requirements.txt
 ```
