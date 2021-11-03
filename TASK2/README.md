@@ -64,7 +64,7 @@ configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_
 ### Test Time Augmentation
 > Test Time Augmentation(TTA)는 Test 이미지에 대하여 Augmentation을 적용하여 Augmented Image 또한 평가하여 최종 분류 결과를 출력하는 기법임. Augmentation 기법 중 Flip을 적용함.
 
-### Inference 후, Submission format으로 변경함.
+### 각 모델에 대한 Inference 후, Submission format으로 변경함.
 ### Iteration 66000, Flip = True
 ```
 python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_66000.pth --output work_dirs/ --save_name results_cascade_66000_flip
