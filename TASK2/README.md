@@ -61,35 +61,38 @@ configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_
 >Swin Transformer는 Object Detection이나 Semantic Segmentation과 같은 Dense Prediction Task에서 이미지의 시각적 개체에 대한 Scale 변화가 크고, Pixel Resolution이 커서 Vision Transformer(ViT)가 잘 작동하지 않는다는 점을 보완한 모델임. Swin Transformer는 작은 크기의 Patch에서부터 시작하여 Layer가 깊어질수록 점차 주변 Patch를 병합하여 Hierarchical Representation을 구축함. 또한, Window Multi-head Self-Attention(MSA)과 Shifted Window MSA 방법론을 제안하여 Shifted Window가 이전 Layer의 Windows를 연결하여 Dense Prediction Task에서 큰 성능 개선함.
 
 ## Inference
+## TTA 설명
+### Inference 후, Submission format으로 변경함.
 ### Iteration 66000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_66000.pth --output work_dirs/ --save_name results_cascade_66000_flip
+python submission.py --file_dir work_dirs/results_cascade_66000_flip.pickle --save_name submission_cascade_66000_flip.json
 ```
 ### Iteration 70000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_70000_flip
+python submission.py --file_dir work_dirs/results_cascade_70000_flip.pickle --save_name submission_cascade_70000_flip.json
 ```
 
 ### Iteration 66000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mod
+python submission.py --file_dir work_dirs/results_cascade_66000_mod.pickle --save_name submission_cascade_66000_mod.json
 ```
 ### Iteration 70000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_70000_mod
+python submission.py --file_dir work_dirs/results_cascade_70000_mod.pickle --save_name submission_cascade_70000_mod.json
 ```
 ### Iteration 68000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_68000_mod
+python submission.py --file_dir work_dirs/results_cascade_68000_mod.pickle --save_name submission_cascade_68000_mod.json
 ```
 ### Iteration 64000, Flip = True
 ```
 python configs/_base_/datasets/image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_64000_mod
-```
-
-### Submission format으로 변경함.
-```
-python submission.py --file_dir work_dirs/results_cascade_66000_flip.pickle --save_name submission_cascade_66000_flip.json
+python submission.py --file_dir work_dirs/results_cascade_64000_mod.pickle --save_name submission_cascade_64000_mod.json
 ```
 
 ## Ensemble
