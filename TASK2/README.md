@@ -77,7 +77,7 @@ python submission.py --file_dir work_dirs/results_cascade_70000_flip.pickle --sa
 ```
 ### Iteration 66000, Flip = False
 ```
-python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_66000_mod
+python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_66000.pth --output work_dirs/ --save_name results_cascade_66000_mod
 python submission.py --file_dir work_dirs/results_cascade_66000_mod.pickle --save_name submission_cascade_66000_mod.json
 ```
 ### Iteration 70000, Flip = False
@@ -87,12 +87,12 @@ python submission.py --file_dir work_dirs/results_cascade_70000_mod.pickle --sav
 ```
 ### Iteration 68000, Flip = False
 ```
-python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_68000_mod
+python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_68000.pth --output work_dirs/ --save_name results_cascade_68000_mod
 python submission.py --file_dir work_dirs/results_cascade_68000_mod.pickle --save_name submission_cascade_68000_mod.json
 ```
 ### Iteration 64000, Flip = False
 ```
-python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_70000.pth --output work_dirs/ --save_name results_cascade_64000_mod
+python image_demo.py '/DATA/02_bugdetection/images/test/*.jpg' configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.py  work_dirs/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco/iter_64000.pth --output work_dirs/ --save_name results_cascade_64000_mod
 python submission.py --file_dir work_dirs/results_cascade_64000_mod.pickle --save_name submission_cascade_64000_mod.json
 ```
 
