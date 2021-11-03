@@ -61,8 +61,7 @@ configs/cbnet/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_
 >Swin Transformer는 Object Detection이나 Semantic Segmentation과 같은 Dense Prediction Task에서 이미지의 시각적 개체에 대한 Scale 변화가 크고, Pixel Resolution이 커서 Vision Transformer(ViT)가 잘 작동하지 않는다는 점을 보완한 모델임. Swin Transformer는 작은 크기의 Patch에서부터 시작하여 Layer가 깊어질수록 점차 주변 Patch를 병합하여 Hierarchical Representation을 구축함. 또한, Window Multi-head Self-Attention(MSA)과 Shifted Window MSA 방법론을 제안하여 Shifted Window가 이전 Layer의 Windows를 연결하여 Dense Prediction Task에서 큰 성능 개선함.
 
 ## Inference
-## TTA 설명
-- Test Time Augmentation
+### Test Time Augmentation
 > Test Time Augmentation(TTA)는 Test 이미지에 대하여 Augmentation을 적용하여 Augmented Image 또한 평가하여 최종 분류 결과를 출력하는 기법임. Augmentation 기법 중 Flip을 적용함.
 
 ### Confidence Score가 높은 모델 순서대로 TTA Inference 후, Submission format으로 변경함.
@@ -99,6 +98,7 @@ python submission.py --file_dir work_dirs/results_cascade_64000_mod.pickle --sav
 ```
 
 ## Ensemble
+### Weighted Boxes Fushion()을 활용하여 여러 Object Detection 모델의 Bounding Box 예측결과를 Ensemble함.
 ```
 python submission_wbf.py --file_list submission_cascade_66000_flip.json submission_cascade_70000_flip.json submission_cascade_66000_mod.json submission_cascade_70000_mod.json submission_cascade_68000_mod.json submission_cascade_64000_mod.json --save_name submission_cascade_wbf_6670flip_iou05_weights332211.json --weights 3 3 2 2 1 1
 ```
