@@ -15,6 +15,7 @@ cd CBNetV2
 wget https://github.com/CBNetwork/storage/releases/download/v1.0.0/cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.pth.zip
 unzip cascade_mask_rcnn_cbv2_swin_small_patch4_window7_mstrain_400-1400_adamw_3x_coco.pth.zip
 ```
+### Install Packages
 ```
 pip install -r requirements.txt
 ```
@@ -98,7 +99,7 @@ python submission.py --file_dir work_dirs/results_cascade_64000_mod.pickle --sav
 ## Ensemble
 - 여러 Object Detection 모델의 Bounding Box 예측결과를 mAP Score를 기준으로 정렬한 후 Weighted Boxes Fushion(WBF)을 활용하여 Ensemble함.
 ```
-python submission_wbf.py --file_list submission_cascade_66000_flip.json submission_cascade_70000_flip.json submission_cascade_66000_mod.json submission_cascade_70000_mod.json submission_cascade_68000_mod.json submission_cascade_64000_mod.json --save_name submission_cascade_wbf_6670flip_iou05_weights332211.json --weights 3 3 2 2 1 1
+python submission_wbf.py --file_list submission_cascade_66000_flip.json submission_cascade_70000_flip.json submission_cascade_66000_mod.json submission_cascade_70000_mod.json submission_cascade_68000_mod.json submission_cascade_64000_mod.json --save_name submission_cascade_wbf_6670flip_iou07_weights332211.json --weights 3 3 2 2 1 1
 ```
 - Weighted Boxes Fusion: ensembling boxes for object detection models
 - Paper : https://arxiv.org/abs/1910.13302 (Roman Solovyev, Weimin Wang, Tatiana Gabruseva)
