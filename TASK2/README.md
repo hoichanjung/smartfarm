@@ -3,7 +3,7 @@
 ## Requirements
 - Ubuntu  : 18.04
 - Python  : 3.8.5
-- Download Weight File
+- Download Pre-trained Weight
 ```
 pip install git
 git clone https://github.com/VDIGPKU/CBNetV2.git
